@@ -8,10 +8,8 @@ if [ -d "$corbeille" ]; then
 else
         mkdir $corbeille
         echo "Corbeille vide"
-fi' > /usr/bin/garbage.sh
+fi' > ~/corbeille.sh
 
-sudo chmod +x /usr/bin/garbage.sh
-alias TRASH='bash /usr/bin/garbage.sh'
 
 echo '#!/bin/bash
 
@@ -51,10 +49,8 @@ else
         mv $1 ~/corbeille
 
 
-fi' > /usr/bin/del.sh
+fi' > ~/del.sh
 
-sudo chmod +x /usr/bin/del.sh
-alias RM='bash /usr/bin/del.sh'
 
 echo '#!/bin/sh
 
@@ -65,7 +61,20 @@ else
         #echo $fullpath
         mv /home/vagrant/corbeille/$1 $(cat "/home/vagrant/corbeille/.$1.info")
         rm /home/vagrant/corbeille/.$1.info
-fi' > /usr/bin/reset.sh
+fi' > ~/reset.sh
 
+
+sudo mv ~/corbeille.sh /usr/bin/corbeille.sh
+
+sudo chmod +x /usr/bin/corbeille.sh
+
+sudo mv ~/del.sh /usr/bin/del.sh
+sudo chmod +x /usr/bin/del.sh
+
+sudo mv ~/reset.sh /usr/bin/reset.sh
 sudo chmod +x /usr/bin/reset.sh
-alias RESTORE='bash /usr/bin/reset.sh'
+echo "alias RESTORE='bash /usr/bin/reset.sh'
+alias TRASH='bash /usr/bin/corbeille.sh'
+alias RM='bash /usr/bin/del.sh'" >> ~/.bashrc
+sudo reboot
+# run source ~/.bashrc alone at the end
