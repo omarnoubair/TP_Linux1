@@ -8,8 +8,8 @@ Vagrant.configure('2') do |config|
 	config.vm.network "public_network", ip: "192.168.1.11"
 	# Mettre en place un cache pour APT
 	# config.vm.synced_folder 'v-cache', '/var/cache/apt'
-	config.vm.define 'WS_NFS' do |machine|
-		machine.vm.hostname = 'WS_NFS'
+	config.vm.define 'WSNFS' do |machine|
+		machine.vm.hostname = 'WSNFS'
 		# Limiter la RAM de la VM
 		machine.vm.provider 'virtualbox' do |vb|
 			vb.memory = '3000'
