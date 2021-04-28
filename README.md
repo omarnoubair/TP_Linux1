@@ -72,6 +72,9 @@ Lancer la commande
 vagrant up && vagrant ssh
 ```
 
+## Points avec le tuteur
+* Mardi 1h
+* Mercredi 30 minutes
 
 ## Suivi des taches
 
