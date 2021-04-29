@@ -49,11 +49,11 @@ bash install-apache.sh
 >>  Ouvre les ports 80 et 443 
 
 *  Vérification
-  1. Avtivation du port 80 sur VirtualBox pour apache
-  1. ![IMG](https://raw.githubusercontent.com/omarnoubair/TP_Linux1/main/images/vb-apche.PNG "VB Apache")
+   1. Avtivation du port 80 sur VirtualBox pour apache
+   1. ![IMG](https://raw.githubusercontent.com/omarnoubair/TP_Linux1/main/images/vb-apche.PNG "VB Apache")
   
-  1. Accéder à index.html de apache
-  1. ![IMG](https://raw.githubusercontent.com/omarnoubair/TP_Linux1/main/images/index-apche.PNG "index Apache")
+   1. Accéder à index.html de apache
+   1. ![IMG](https://raw.githubusercontent.com/omarnoubair/TP_Linux1/main/images/index-apche.PNG "index Apache")
 
 
 ## Serveur d’intégration continue avec Jenkins
