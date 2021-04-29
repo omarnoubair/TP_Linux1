@@ -4,12 +4,10 @@
 
 # Informations Instalations
 
-## Diagramme parc informatique => Modifier l'image
+## Diagramme parc informatique 
 
-![A tester une fois sur comit sur git.](https://raw.githubusercontent.com/omarnoubair/TP_Linux1/main/images/DIAGRAMME_TP_LINUX.png "Diagramme.")
-## Lien vers le diagramme
+![DSI de l'entreprise.](https://raw.githubusercontent.com/omarnoubair/TP_Linux1/main/images/DIAGRAMME_TP_LINUX.png "Diagramme.")
 
-Diagramme parc informatique [DSI de l'entreprise](https://raw.githubusercontent.com/omarnoubair/TP_Linux1/main/images/DIAGRAMME_TP_LINUX.png).
 
 ### Créations des Seveurs :
 #### Nous avons 3 postes dev avec chacun une @IP :
@@ -26,7 +24,7 @@ Diagramme parc informatique [DSI de l'entreprise](https://raw.githubusercontent.
 
 ## Serveur web hébergeant le site de l’entreprise 
 
-### Instalation
+### Démarrage de la machine
 
 1. Ouvrer le dossier ws-apache
 1. Lancer la commande suivante : 
@@ -38,7 +36,7 @@ vagrant up && vagrant ssh
 
 ## Serveur d’intégration continue avec Jenkins
 
-### Instalation
+###  Démarrage de la machine
 
 1. Ouvrer le dossier ws-jenkins
 1. Lancer la commande suivante : 
@@ -50,7 +48,7 @@ vagrant up && vagrant ssh
 
 ## Postes de développement sous Linux
 
-### Instalation
+###  Démarrage de la machine
 
 1. Ouvrer les dossiers ws-dev1 / ws-dev2 / ws-dev3
 1. Lancer la commande suivante : 
@@ -123,7 +121,7 @@ bash garbage.sh
 
 ## Serveur de fichier partagé en NFS permettant de faire de la sauvegarde
 
-### Instalation
+###  Démarrage de la machine
 
 1. Ouvrer le dossier ws-nfs
 1. Lancer la commande suivante : 
