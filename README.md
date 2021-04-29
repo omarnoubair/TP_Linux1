@@ -27,34 +27,90 @@
 ### Démarrage de la machine
 
 1. Ouvrer le dossier ws-apache
+1.Faites un clique droit puis => Git Bash here
 1. Lancer la commande suivante : 
-  1.Faites un clique droit puis => Git Bash here
 ```
-Lancer la commande 
 vagrant up && vagrant ssh
 ```
+
+### Installation Pré-requis 
+
+1. Copier le fichier install-apache.sh
+1. Executer la commande 
+```
+bash install-apache.sh
+```
+> Installe tous les composants nécessaires au démarrage de apache
+> 
+>> Apache2
+>
+> Installe UFW pour la confiration du pare-feu
+> 
+>>  Ouvre les ports 80 et 443 
+
+*  Vérification
+  1. Avtivation du port 80 sur VirtualBox pour apache
+  1. ![IMG](https://raw.githubusercontent.com/omarnoubair/TP_Linux1/main/images/vb-apche.PNG "VB Apache")
+  
+  1. Accéder à index.html de apache
+  1. ![IMG](https://raw.githubusercontent.com/omarnoubair/TP_Linux1/main/images/index-apche.PNG "index Apache")
+
 
 ## Serveur d’intégration continue avec Jenkins
 
 ###  Démarrage de la machine
 
 1. Ouvrer le dossier ws-jenkins
+1.Faites un clique droit puis => Git Bash here
 1. Lancer la commande suivante : 
-  1.Faites un clique droit puis => Git Bash here
 ```
-Lancer la commande 
 vagrant up && vagrant ssh
 ```
+
+### Installation Pré-requis 
+
+* Copier le fichier install-jenkins.sh
+*  Executer la commande 
+```
+bash install-jenkins.sh
+```
+> Créer une partition de type ext4 sur le disque vide
+> 
+>> sdb
+>
+> Installe la version stable de Jenkinset tous les composants nécessaires pour le démarrage
+> 
+>> openjdk-11-jdk, jenkins, gnupg
+>
+> Créer un utilisateur userjob
+>
+>>Donne les droit apt au userjob
+>
+>Afficher à la fin de l'execution du script le mot de passe Jenkins
+>>sudo cat /var/lib/jenkins/secrets/initialAdminPassword
+>
+> Installe UFW pour la confiration du pare-feu
+> 
+>>  Ouvre les ports 8080 et 22 
+
+* Vérification Jenkins
+   1. Avtivation du port 80 sur VirtualBox pour Jenkins
+   1. ![IMG](https://raw.githubusercontent.com/omarnoubair/TP_Linux1/main/images/vb-jenkins.PNG "VB Apache")
+
+   1. Accéder à index.html de apache
+   1.![IMG](https://raw.githubusercontent.com/omarnoubair/TP_Linux1/main/images/jenkins.PNG "jenkins")
+
+* Accéder en ssh depuis les postes de développement
+
 
 ## Postes de développement sous Linux
 
 ###  Démarrage de la machine
 
 1. Ouvrer les dossiers ws-dev1 / ws-dev2 / ws-dev3
+1.Faites un clique droit puis => Git Bash here
 1. Lancer la commande suivante : 
-  1.Faites un clique droit puis => Git Bash here
 ```
-Lancer la commande 
 vagrant up && vagrant ssh
 ```
 
@@ -65,7 +121,7 @@ vagrant up && vagrant ssh
 ```
 bash install_postdev.sh
 ```
-> Install tout les composant necessaire
+> Installe Tous les composants nécessaires
 > 
 >> Python, Git, VS, Vagrant, virtualBox
 >
@@ -124,10 +180,9 @@ bash garbage.sh
 ###  Démarrage de la machine
 
 1. Ouvrer le dossier ws-nfs
+1.Faites un clique droit puis => Git Bash here
 1. Lancer la commande suivante : 
-  1.Faites un clique droit puis => Git Bash here
 ```
-Lancer la commande 
 vagrant up && vagrant ssh
 ```
 
