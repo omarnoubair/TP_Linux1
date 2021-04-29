@@ -14,11 +14,12 @@ echo
 echo t
 echo
 echo 83
-echo w ) | sudo fdisk /dev/sdb
+echo w ) | sudo fdisk -f /dev/sdb
 sudo mkfs.ext4 /dev/sdb1
 
 # Installation de Jenkins
-sudo apt update
+sudo apt -y update
+
 # Installation de la jdk
 sudo apt -y install openjdk-11-jdk
 
@@ -29,44 +30,64 @@ sudo apt -y install gnupg
 wget -q -O - https://pkg.jenkins.io/debian-stable/jenkins.io.key | sudo apt-key add -
 sudo sh -c 'echo deb https://pkg.jenkins.io/debian-stable binary/ > /etc/apt/sources.list.d/jenkins.list'
 
-sudo apt-get update
-sudo apt-get install jenkins
+sudo apt-get -y update
+sudo apt-get -y install jenkins
 
 # Démarrage de Jenkins
-sudo service jenkins start
+sudo systemctl start jenkins
+
+# Démarrage de Jenkins au démarrage de la machine
+sudo systemctl enable jenkins
 
 # Vérifier l'état du service Jenkins
 sudo systemctl status jenkins
 
 # Verification du démarrage en local
-wget localhost
+curl http://127.0.0.1:8080
 
 # Création d'un utilisateur user job
-sudo adduser userjob
+sudo useradd userjob
 
 
 # Donner les permissions apt via le fichier sudoers  à l'utilisateur userjob
-# Sauvegarde du fichier sudoers
-sudo cp /etc/sudoers /etc/sudoers.old
 sudo su -c "echo 'userjob  ALL=/usr/bin/apt' >> /etc/sudoers"
 
 # Afficher /var/jenkins_home/secrets/initialAdminPassword pour récuperer le mot de passe
-sudo cat cat /var/lib/jenkins/secrets/initialAdminPassword
+sudo cat /var/lib/jenkins/secrets/initialAdminPassword
 
-# Install iptables
-sudo apt install -y iptables
+# Installer un pare feu et ouvrir le port qu’utilise Jenkins ainsi 
+# que le port utilisé pour la connexion ssh
+function configurationUFW {
 
-# Ouvertures des ports 80 pour jenkins et 22 pour le connexion
-sudo iptables -A INPUT -p tcp --dport 22 -j ACCEPT
-sudo iptables -A INPUT -p tcp --dport 80 -j ACCEPT
+	sudo apt -y install ufw
 
-# Mise en place une protection contre les intrusions en filtrant les adresses IP
-# Installation de fail2ban 
-#sudo apt install -y fail2ban 
-# Démarrage du service fail2ban
-#service fail2ban start
+	#Activer ufw
+	echo y | sudo ufw enable
+	if [ $? -gt 0 ]; then
+		echo "Erreur lors de l'activation de UFW"
+		exit 1;
+	fi 
 
+    #Ouverture du port 8080
+    sudo ufw allow 8080
 
-# Déployer sur ce serveur pour l’utilisateur userjob les clés publiques ssh de chacun des postes de développement
+    # Ouverture OpenSSH
+    sudo ufw allow OpenSSH
+	
+    # Ouverture de la connexion ssh
+	sudo ufw allow ssh 
 
+	# Ouverture de la connexion 22
+	sudo ufw allow 22 
 
+	# Vérification de l'ouverture des ports
+	sudo ufw status numbered
+}
+# Appel de la fonction
+configurationUFW
+
+# Afficher /var/jenkins_home/secrets/initialAdminPassword pour récuperer le mot de passe
+echo " Le mot de passe Jenkins est : " && sudo cat /var/lib/jenkins/secrets/initialAdminPassword 
+
+# Déployer sur ce serveur pour l’utilisateur userjob les clés 
+# publiques ssh de chacun des postes de développement

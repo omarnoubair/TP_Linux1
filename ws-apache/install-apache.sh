@@ -5,13 +5,15 @@
 # Serveur web apahe2 hébergeant le site de l’entreprise
 # Version : v0.1  
 
+sudo apt -y update
+
 function installApache {
 
 	# Installation Apache2
 	sudo apt install -y apache2 
 
 	# Demarrage Apache2
-	sudo service apache2 start 
+	sudo systemctl start apache2 
 	# Si erreur retournée par lors du démarrage de apache sortir en erreur
 	if [ $? -gt 0 ]
 	then
@@ -19,12 +21,17 @@ function installApache {
 		exit 1;
 	fi
 
+	# Demarrage Apache2
+	sudo systemctl enable apache2
+
 	# Verification d'instalation Apache2
+	curl http://127.0.0.1:8080 
 	wget localhost
 }
 # Appel de la fonction
 installApache
 
+# Creation du dossier /var/www/html
 function createDirectory {
 
 	# Repertoire contenant html
@@ -32,7 +39,7 @@ function createDirectory {
 
 	# si le repertoire /www/html n'existe pas alors le creer
 	if [ ! -d "$HTML_DIRECTORY" ]; then
-		mkdir -p $HTML_DIRECTORY
+		sudo mkdir -p $HTML_DIRECTORY
 
 	# Si erreur retournée par mkdir alors sortir en erreur
 	if [ $? -gt 0 ]
@@ -44,31 +51,6 @@ function createDirectory {
 }
 # Appel de la fonction
 createDirectory
-
-# Création d'un utilisateur user job
-sudo adduser userjob
-
-# Ajout du group www-data
-sudo usermod -aG www-data userjob
-if [ $? -gt 0 ]; then
-	echo "Erreur lors de la création du groupe www-data"
-	exit 1;
-fi 
-
-# Le dossier /var/www/html avec pour groupe www-data et pour le droit de lire / écrire pour le
-# groupe (en plus du propriétaire) ainsi que pour tout ses sous-dossiers
-sudo chown -R www-data:www-data /var/www/html
-if [ $? -gt 0 ] ;then
-	echo "Erreur lors de configuration des droits du groupe www-data et du dossier /var/www/html"
-	exit 1;
-fi 
-
-sudo chmod -R 770 /var/www/html
-if [ $? -gt 0 ]; then
-	echo "Erreur lors de la modification des droits écriture et lecture du dossier /var/www/html"
-	exit 1;
-fi 
-
 
 # Copie du fichier index.html dans /var/www/html
 cat << 'EOF' > index.html
@@ -101,31 +83,49 @@ if [ $? -gt 0 ]; then
 	exit 1;
 fi 
 
-
 # Déplacer le index.html dans le dossier /var/www/html
 sudo mv index.html /var/www/html
 if [ $? -gt 0 ]; then
 	echo "Erreur lors du déplacement du fichier index.html dans /var/www/html"
 	exit 1;
+fi  
+
+# Le dossier /var/www/html avec pour groupe www-data et pour le droit de lire / écrire pour le
+# groupe (en plus du propriétaire) ainsi que pour tout ses sous-dossiers
+sudo chown -R www-data:www-data /var/www/html
+if [ $? -gt 0 ] ;then
+	echo "Erreur lors de configuration des droits du groupe www-data et du dossier /var/www/html"
+	exit 1;
 fi 
 
+sudo chmod -R 765 /var/www/html
+if [ $? -gt 0 ]; then
+	echo "Erreur lors de la modification des droits écriture et lecture du dossier /var/www/html"
+	exit 1;
+fi 
+
+
+
+# Installer et configurer le pare-feu UFW et ouverture des ports 80 et 443
 function configurationUFW {
 
-	# Installer et configurer le pare-feu UFW et ouverture des ports 80 et 443
-	sudo apt install ufw
+	sudo apt install ufw 
 
 	#Activer ufw
 	echo y | sudo ufw enable
 	if [ $? -gt 0 ]; then
 		echo "Erreur lors de l'activation de UFW"
 		exit 1;
-	fi 
+	fi
 
 	#Ouverture du port 80
 	sudo ufw allow 80
 
 	# Ouverture du port 443
 	sudo ufw allow 443
+
+	# Ouverture de la connexion ssh
+	sudo ufw allow ssh 
 
 	# Vérification de l'ouverture des ports
 	sudo ufw status numbered
