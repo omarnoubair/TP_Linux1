@@ -9,7 +9,7 @@
 ![A tester une fois sur comit sur git.](/images/DIAGRAMME_TP_LINUX.png"This is a sample image.")
 ## Lien vers le diagramme
 
-Diagramme parc informatique [DSI de l'entreprise](https://github.com/omarnoubair/TP_Linux1/blob/main/DIAGRAMME_TP_LINUX.png).
+Diagramme parc informatique [DSI de l'entreprise](https://raw.githubusercontent.com/omarnoubair/TP_Linux1/main/images/DIAGRAMME_TP_LINUX.png).
 
 ### Créations des Seveurs :
 #### Nous avons 3 postes dev avec chacun une @IP :
