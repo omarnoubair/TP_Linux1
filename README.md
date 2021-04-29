@@ -6,7 +6,7 @@
 
 ## Diagramme parc informatique => Modifier l'image
 
-![A tester une fois sur comit sur git.](/images/DIAGRAMME_TP_LINUX.png"This is a sample image.")
+![A tester une fois sur comit sur git.](https://raw.githubusercontent.com/omarnoubair/TP_Linux1/main/images/DIAGRAMME_TP_LINUX.png "Diagramme.")
 ## Lien vers le diagramme
 
 Diagramme parc informatique [DSI de l'entreprise](https://raw.githubusercontent.com/omarnoubair/TP_Linux1/main/images/DIAGRAMME_TP_LINUX.png).
