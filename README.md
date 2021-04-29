@@ -68,7 +68,9 @@ vagrant up && vagrant ssh
 bash install_postdev.sh
 ```
 > Install tout les composant necessaire
+> 
 >> Python, Git, VS, Vagrant, virtualBox
+>
 > Ce Script clone également le depot git dans le home user
 
 ### Les Cles SSH
@@ -81,7 +83,9 @@ bash install_postdev.sh
 bash authorize_copy_key.sh 
 ```
 > Permet de changer dans le fichier /etc/ssh/sshd_config la valeur de PasswordAuthentication en yes
+> 
 > attendre 5minutes que la copy de cle soit terminé
+> 
 > Remet le PasswordAuthentication en no
 
 * Executer la commande sur le post_dev
@@ -90,9 +94,13 @@ bash authorize_copy_key.sh
 bash key_gen.sh
 ```
 > Cree une Cle devtoWSI
+> 
 > Contien le nom d'user vers qui envoyé la cle avec son @IP
+> 
 >> En cas de réexécution : Vérifier les informations de votre USER (nom et password)
+>
 > Copy la Cle vers l'utilisateur
+> 
 > ajoute la passphrasse a l'agent 
 
 ### Corbeille
@@ -103,9 +111,13 @@ bash key_gen.sh
 bash garbage.sh
 ```
 > Creer les 3 script demande
+> 
 > Les copies dans le repertoir /usr/bin/
+> 
 > Ajoute les alias RM, TRASH et RESTORE dans le repertoire ~/.bashrc
+> 
 >> Fichier contenant tout les alias
+>
 > Reboot la session pour prendre en compte les alias ajouter
 
 
