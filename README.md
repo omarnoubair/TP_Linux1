@@ -97,8 +97,8 @@ bash install-jenkins.sh
    1. Avtivation du port 80 sur VirtualBox pour Jenkins
    1. ![IMG](https://raw.githubusercontent.com/omarnoubair/TP_Linux1/main/images/vb-jenkins.PNG "VB Apache")
 
-   1. Accéder à index.html de apache
-   1.![IMG](https://raw.githubusercontent.com/omarnoubair/TP_Linux1/main/images/jenkins.PNG "jenkins")
+   1. Accéder à Jenkins
+   1. ![IMG](https://raw.githubusercontent.com/omarnoubair/TP_Linux1/main/images/jenkins.PNG "jenkins")
 
 * Accéder en ssh depuis les postes de développement
 
