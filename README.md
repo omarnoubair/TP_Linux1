@@ -167,10 +167,12 @@ bash authorize_copy_key.sh
 > 
 > Remet le PasswordAuthentication en no
 
-* Executer la commande sur le post_dev
+* Executer les commandes sur le post_dev
 
 ```
 bash key_gen.sh
+exec ssh-agent bash
+./add_key.sh
 ```
 > Cree une Cle devtoWSI
 > 
