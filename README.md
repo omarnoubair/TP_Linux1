@@ -35,8 +35,8 @@ vagrant up && vagrant ssh
 
 ### Installation Pré-requis 
 
-1. Copier le fichier install-apache.sh
-1. Executer la commande 
+* Copier les fichiers install-apache.sh et nfs-client-apache.sh
+*  Executer la commande
 ```
 bash install-apache.sh
 ```
@@ -47,8 +47,18 @@ bash install-apache.sh
 > Installe UFW pour la confiration du pare-feu
 > 
 >>  Ouvre les ports 80 et 443 
+*  Executer la commande
+```
+sudo bash nfs-client-apache.sh
+```
+> Installe tous les composants nécessaires du client NFS
+> 
+>> nfs-common
+>
+> Confiure la sauvegarde du dossier /var/www/html dans le dossier /var/web de NFS 
 
-*  Vérification
+
+*  Vérification apache
    1. Avtivation du port 80 sur VirtualBox pour apache
    1. ![IMG](https://raw.githubusercontent.com/omarnoubair/TP_Linux1/main/images/vb-apche.PNG "VB Apache")
   
@@ -69,7 +79,7 @@ vagrant up && vagrant ssh
 
 ### Installation Pré-requis 
 
-* Copier le fichier install-jenkins.sh
+* Copier les fichiers install-jenkins.sh et nfs-client-jenkins.sh
 *  Executer la commande 
 ```
 bash install-jenkins.sh
@@ -93,11 +103,24 @@ bash install-jenkins.sh
 > 
 >>  Ouvre les ports 8080 et 22 
 
+*  Executer la commande 
+```
+sudo bash nfs-client-jenkins.sh
+```
+> Installe tous les composants nécessaires du client NFS
+> 
+>> nfs-common
+>
+>> créer le dossier de partage usr/local/jenkins
+>
+> Confiure la sauvegarde du dossier usr/local/jenkins dans le dossier /var/server_ic 
+
 * Vérification Jenkins
    1. Avtivation du port 80 sur VirtualBox pour Jenkins
    1. ![IMG](https://raw.githubusercontent.com/omarnoubair/TP_Linux1/main/images/vb-jenkins.PNG "VB Apache")
 
    1. Accéder à Jenkins
+   1. ![IMG](https://raw.githubusercontent.com/omarnoubair/TP_Linux1/main/images/jenkins2.PNG "jenkins2")
    1. ![IMG](https://raw.githubusercontent.com/omarnoubair/TP_Linux1/main/images/jenkins.PNG "jenkins")
 
 * Accéder en ssh depuis les postes de développement
