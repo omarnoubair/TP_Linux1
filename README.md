@@ -79,7 +79,9 @@ vagrant up && vagrant ssh
 
 ### Installation Pré-requis 
 
-* Copier les fichiers install-jenkins.sh et nfs-client-jenkins.sh
+* Copier les fichiers install-jenkins.sh , nfs-client-jenkins.sh et create_user.sh
+>> *Le nom du fichier **create_user.sh** doit être respecté*
+
 *  Executer la commande 
 ```
 bash install-jenkins.sh
