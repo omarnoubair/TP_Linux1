@@ -139,7 +139,7 @@ vagrant up && vagrant ssh
 
 ### Installation Pré-requis 
 
-* Copier le fichier install_postdev.sh 
+* Copier le fichier install_postdev.sh
 * Executer la commande 
 ```
 bash install_postdev.sh
@@ -197,6 +197,32 @@ bash garbage.sh
 >
 > Reboot la session pour prendre en compte les alias ajouter
 
+### Packet DEB
+
+* Copier le fichier create-deb.sh
+* Executer la commande 
+```
+bash create-deb.sh
+```
+>> Creer un paquet packet  postedev.deb
+> 
+> Afficher la liste des dossiers avec la commande
+```
+ls 
+```
+> 
+> executer cette commande pour voir le contenu du dossier
+> 
+```
+ls postedev/usr/bin
+```
+>
+>  executer cette commande pour installer le packet 
+>
+```
+sudo dpkg -i postedev.deb
+```
+
 
 ## Serveur de fichier partagé en NFS permettant de faire de la sauvegarde
 
@@ -208,6 +234,30 @@ bash garbage.sh
 ```
 vagrant up && vagrant ssh
 ```
+
+### Installation Pré-requis 
+
+* Copier le fichier install-nfs.sh
+*  Executer la commande
+```
+sudo bash install-nfs.sh
+```
+> Installe tous les composants nécessaires du serveur NFS
+> 
+>> fs-kernel-server rpcbind portmap
+>
+>> créer les dossiers de suvegarde 
+>
+>>>>/var/web/ pour le serveur apache
+>
+>>>>/var/server_ic/ pour le serveur jenkins
+>
+>>Sauvegarde après 7 jours dans le dossier /var/save
+>
+>>>>serveur_web_jour_mois_annee.tar.gz pour le serveur apche
+>
+>>>>serveur_ic_jour_mois_annee.tar.gz pour le serveur jenkins
+
 
 ## Points avec le tuteur
 * Mardi 1h
