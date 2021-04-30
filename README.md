@@ -163,7 +163,7 @@ bash authorize_copy_key.sh
 ```
 > Permet de changer dans le fichier /etc/ssh/sshd_config la valeur de PasswordAuthentication en yes
 > 
-> attend 5minutes que la copy de cle soit terminé (côté dev)
+> attend 1minute que la copy de cle soit terminé (côté dev)
 > 
 > Remet le PasswordAuthentication en no
 
