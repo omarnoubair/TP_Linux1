@@ -1,7 +1,6 @@
 #!/bin/bash
 
-echo 
-"#!/usr/bin/expect -f
+echo "#!/usr/bin/expect -f
 
 #ce script attend en param le nom de la cle a generer
 spawn /usr/sbin/adduser userjob
