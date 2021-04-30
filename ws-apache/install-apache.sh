@@ -1,4 +1,4 @@
-#!/bin/sh 
+#!/bin/bash
 
 # Michael & Omar
 
@@ -26,7 +26,6 @@ function installApache {
 
 	# Verification d'instalation Apache2
 	curl http://127.0.0.1:8080 
-	wget localhost
 }
 # Appel de la fonction
 installApache

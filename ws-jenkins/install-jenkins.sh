@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # Michael & Omar
 
@@ -14,7 +14,7 @@ echo
 echo t
 echo
 echo 83
-echo w ) | sudo fdisk -f /dev/sdb
+echo w ) | sudo fdisk /dev/sdb
 sudo mkfs.ext4 /dev/sdb1
 
 # Installation de Jenkins
@@ -45,9 +45,11 @@ sudo systemctl status jenkins
 # Verification du démarrage en local
 curl http://127.0.0.1:8080
 
-# Création d'un utilisateur user job
-sudo useradd userjob
+sudo apt-get install -y expect
 
+# Création d'un utilisateur user job
+# sudo useradd userjob
+bash  user_create.sh
 
 # Donner les permissions apt via le fichier sudoers  à l'utilisateur userjob
 sudo su -c "echo 'userjob  ALL=/usr/bin/apt' >> /etc/sudoers"
